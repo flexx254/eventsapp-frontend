@@ -61,7 +61,7 @@ body {
 
 /* Menu icon (hamburger) */
 .menu-icon {
-  display: none;
+  display: flexx;
   flex-direction: column;
   cursor: pointer;
   gap: 6px;
