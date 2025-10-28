@@ -1,235 +1,232 @@
 /* General reset */
-
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-
 body {
-background: black;
-color: white;
-overflow-x: hidden;
+  background: black;
+  color: white;
+  overflow-x: hidden;
 }
 
 /* Header */
 .header {
-width: 100%;
-position: fixed;
-top: 0;
-left: 0;
-padding: 20px 50px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: rgba(0, 0, 0, 0.6);
-z-index: 1000;
-backdrop-filter: blur(6px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  backdrop-filter: blur(6px);
 }
 
 .logo {
-font-size: 1.8rem;
-font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .nav-links {
-display: flex;
-gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links a {
-color: white;
-text-decoration: none;
-font-weight: 500;
-position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
 }
 
 .nav-links a::after {
-content: "";
-position: absolute;
-bottom: -5px;
-left: 0;
-width: 0%;
-height: 2px;
-background: white;
-transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
-width: 100%;
+  width: 100%;
 }
 
 /* Menu icon (hamburger) */
 .menu-icon {
-display: none;
-flex-direction: column;
-cursor: pointer;
-gap: 6px;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
 }
 
 .menu-icon span {
-width: 25px;
-height: 2px;
-background: white;
-transition: all 0.3s ease;
+  width: 25px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
 }
 
 /* Fancy uneven X effect when active */
 .menu-icon.active span:first-child {
-transform: rotate(45deg) translate(4px, 4px);
-width: 30px;
+  transform: rotate(45deg) translate(4px, 4px);
+  width: 30px;
 }
 
 .menu-icon.active span:last-child {
-transform: rotate(-35deg) translate(3px, -3px);
-width: 20px;
+  transform: rotate(-35deg) translate(3px, -3px);
+  width: 20px;
 }
 
 /* Hero Section */
 .hero {
-background: url('images/bg-large.jpg') no-repeat center center/cover;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 0 20px;
+  background: url('images/bg-large.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .hero-content h1 {
-font-size: 3rem;
-letter-spacing: 1px;
-margin-bottom: 20px;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
-max-width: 600px;
-margin: 0 auto 30px;
-font-size: 1.1rem;
-opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
 .btn-primary {
-background: white;
-color: black;
-padding: 12px 28px;
-border-radius: 25px;
-text-decoration: none;
-transition: 0.3s;
+  background: white;
+  color: black;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .btn-primary:hover {
-background: transparent;
-border: 2px solid white;
-color: white;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
 }
 
 /* About Section */
 .about {
-background: #111;
-padding: 100px 20px;
-text-align: center;
+  background: #111;
+  padding: 100px 20px;
+  text-align: center;
 }
 
 .about h2 {
-margin-bottom: 20px;
-font-size: 2rem;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
 /* Events */
 .events {
-padding: 100px 20px;
-text-align: center;
+  padding: 100px 20px;
+  text-align: center;
 }
 
 .events h2 {
-font-size: 2.2rem;
-margin-bottom: 40px;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
 }
 
 .events-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 30px;
-padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 0 40px;
 }
 
 .event-card {
-background: rgba(255, 255, 255, 0.1);
-border-radius: 20px;
-overflow: hidden;
-transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 
 .event-card:hover {
-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .event-card img {
-width: 100%;
-height: 200px;
-object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .event-info {
-padding: 20px;
+  padding: 20px;
 }
 
 .event-info button {
-background: white;
-border: none;
-color: black;
-padding: 10px 20px;
-border-radius: 20px;
-cursor: pointer;
-transition: 0.3s;
+  background: white;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .event-info button:hover {
-background: transparent;
-border: 2px solid white;
-color: white;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
 }
 
 /* Footer */
 footer {
-background: #111;
-padding: 30px;
-text-align: center;
-font-size: 0.9rem;
+  background: #111;
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-.nav-links {
-display: none;
-flex-direction: column;
-background: rgba(0, 0, 0, 0.9);
-position: absolute;
-top: 70px;
-right: 30px;
-width: 200px;
-border-radius: 10px;
-text-align: right;
-padding: 20px;
-}
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: right;
+    padding: 20px;
+  }
 
-.nav-links.active {
-display: flex;
-}
+  .nav-links.active {
+    display: flex;
+  }
 
-.menu-icon {
-display: flex;
-}
+  .menu-icon {
+    display: flex;
+  }
 
-.hero {
-background: url('images/bg-phone.png') no-repeat center center/cover;
-}
+  .hero {
+    background: url('images/bg-phone.png') no-repeat center center/cover;
+  }
 
-.hero-content h1 {
-font-size: 2rem;
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 }
-}
-
