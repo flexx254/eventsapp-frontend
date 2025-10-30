@@ -221,23 +221,26 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 70px;
-    right: 30px;
-    width: 200px;
-    border-radius: 10px;
-    text-align: right;
-    padding: 20px;
-  }
 
-  .nav-links.active {
-    display: flex;
-  }
 
+.nav-links {
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.95);
+  position: absolute;
+  top: 70px;
+  right: 0; /* full right alignment */
+  width: 220px;
+  border-radius: 10px 0 0 10px;
+  text-align: right;
+  padding: 20px;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.nav-links.active {
+  display: flex;
+}
+  
   .menu-icon {
     display: flex;
   }
