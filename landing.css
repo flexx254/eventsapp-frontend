@@ -47,6 +47,11 @@ body {
 .nav-links {
   display: flex;
   gap: 30px;
+  margin-left: auto;     /* pushes links to the far right */
+  margin-right: 0;        /* ensures they touch the right edge */
+  align-items: center;
+  background-color: #000;
+  width:100vw;
 }
 
 .nav-links a {
