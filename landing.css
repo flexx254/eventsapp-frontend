@@ -13,12 +13,13 @@ body {
 }
 
 /* Header */
+
 .header {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 20px 50px 20px 30px;
+  padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,12 +31,13 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px; /* space between logo and text */
+  gap: 10px;
   font-size: 1.8rem;
   font-weight: bold;
   color: white;
-  margin-left: -10px;
 }
+
+
 
 .logo img {
   height: 50px; /* adjust this if needed: 40–60px works well */
@@ -47,11 +49,12 @@ body {
 .nav-links {
   display: flex;
   gap: 30px;
-  margin-left: auto;     /* pushes links to the far right */
-  margin-right: 0;        /* ensures they touch the right edge */
   align-items: center;
-  background-color: #000;
-  
+  margin-left: auto; /* push menu to the right */
+  justify-content: flex-end;
+  background: transparent;
+  position: relative;
+  right: 0; /* stay flush on the right */
 }
 
 .nav-links a {
