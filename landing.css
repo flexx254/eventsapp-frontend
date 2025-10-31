@@ -254,108 +254,52 @@ footer {
   }
 }
 
-
-  /* ===== EVENT INVEST DRUM LOADER (RANDOMIZED) ===== */
+/* ===== CLEAN MUSIC LOADER ===== */
 #loader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #000;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 9999;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  transition: opacity 0.7s ease, visibility 0.7s;
-}
-
-#loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Drum setup */
-.drum {
-  position: relative;
-  width: 90px;
-  height: 60px;
-  background: radial-gradient(circle at 50% 60%, #333 20%, #111 90%);
-  border: 3px solid gold;
-  border-radius: 50% / 20%;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-  margin-bottom: 20px;
-  animation: drum-shake 1s infinite ease-in-out;
-}
-
-.stick {
-  position: absolute;
-  width: 60px;
-  height: 6px;
-  background: linear-gradient(90deg, #e8c14d, #f5e19b);
-  border-radius: 3px;
-  top: -25px;
-  transform-origin: right center;
-  animation: stick-hit 0.6s infinite ease-in-out;
-}
-
-.stick-left {
-  left: -40px;
-  transform: rotate(25deg);
-  animation-delay: 0.3s;
-}
-
-.stick-right {
-  right: -40px;
-  transform: rotate(-25deg);
-}
-
-@keyframes drum-shake {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
-}
-
-@keyframes stick-hit {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-25deg); }
-}
-
-/* Floating symbols */
-#floaters {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -80%);
-  pointer-events: none;
-}
-
-.floater {
-  position: absolute;
-  font-size: 1.4rem;
-  opacity: 0;
-  animation: floatUp 3s ease-in-out forwards;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120px);
-    opacity: 0;
-  }
+  overflow: hidden;
 }
 
 #loader p {
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #ccc;
-  margin-top: 10px;
-  }
+  margin-top: 40px;
+  font-size: 1.1em;
+  color: #cfae00;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Floating symbols */
+.symbols {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.symbol {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.8;
+  animation: floatUp 4s linear infinite;
+  text-shadow: 0 0 15px currentColor;
+}
+
+.clef-g  { left: 45%; color: #ffd700; animation-delay: 0s; }
+.clef-f  { left: 55%; color: #ffcc00; animation-delay: 0.8s; }
+.note    { left: 40%; color: #00ff99; animation-delay: 1s; }
+.note2   { left: 60%; color: #00ffaa; animation-delay: 1.3s; }
+.dollar  { left: 47%; color: #00ff66; animation-delay: 0.4s; }
+.dollar2 { left: 53%; color: #00ffcc; animation-delay: 1.6s; }
+
+@keyframes floatUp {
+  0%   { transform: translateY(30px) scale(1); opacity: 0; }
+  25%  { opacity: 1; }
+  100% { transform: translateY(-150px) scale(1.6); opacity: 0; }
+}
