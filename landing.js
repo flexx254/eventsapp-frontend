@@ -7,8 +7,13 @@ menuIcon.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
+
+
+
+
 const mic = document.querySelector('.mic');
 const loader = document.getElementById('loader');
+const fireworks = document.querySelector('.fireworks');
 const pageContent = document.getElementById('page-content');
 let fireInterval;
 
@@ -28,7 +33,7 @@ function fireDollars() {
     dollar.style.setProperty('--x', x);
     dollar.style.setProperty('--y', y);
     dollar.style.fontSize = 20 + Math.random() * 20 + 'px';
-    loader.appendChild(dollar);
+    fireworks.appendChild(dollar);
     setTimeout(() => dollar.remove(), 1500);
   }
 }
@@ -36,12 +41,12 @@ function fireDollars() {
 // Run loader animation every 2s
 fireInterval = setInterval(fireDollars, 2000);
 
-// When page fully loads
+// Stop loader when page fully loads
 window.onload = () => {
-  clearInterval(fireInterval);        // stop fireworks
-  loader.classList.add('fade-out');   // fade out
+  clearInterval(fireInterval);
+  loader.classList.add('fade-out');
   setTimeout(() => {
-    loader.style.display = 'none';    // remove loader
-    pageContent.style.display = 'block'; // show site
+    loader.style.display = 'none';
+    pageContent.style.display = 'block';
   }, 1000);
 };
