@@ -7,9 +7,41 @@ menuIcon.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
+const mic = document.querySelector('.mic');
+const loader = document.getElementById('loader');
+const pageContent = document.getElementById('page-content');
+let fireInterval;
 
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  loader.style.opacity = "0";
-  setTimeout(() => (loader.style.display = "none"), 600);
-});
+// Firework function
+function fireDollars() {
+  mic.classList.add('vibrate');
+  setTimeout(() => mic.classList.remove('vibrate'), 400);
+
+  for (let i = 0; i < 10; i++) {
+    const dollar = document.createElement('div');
+    dollar.classList.add('dollar');
+    dollar.textContent = '$';
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 150 + Math.random() * 100;
+    const x = Math.cos(angle) * distance + 'px';
+    const y = -Math.sin(angle) * distance + 'px';
+    dollar.style.setProperty('--x', x);
+    dollar.style.setProperty('--y', y);
+    dollar.style.fontSize = 20 + Math.random() * 20 + 'px';
+    loader.appendChild(dollar);
+    setTimeout(() => dollar.remove(), 1500);
+  }
+}
+
+// Run loader animation every 2s
+fireInterval = setInterval(fireDollars, 2000);
+
+// When page fully loads
+window.onload = () => {
+  clearInterval(fireInterval);        // stop fireworks
+  loader.classList.add('fade-out');   // fade out
+  setTimeout(() => {
+    loader.style.display = 'none';    // remove loader
+    pageContent.style.display = 'block'; // show site
+  }, 1000);
+};
