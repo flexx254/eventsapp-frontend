@@ -81,7 +81,7 @@ body {
 
 /* Menu icon (hamburger) */
 .menu-icon {
-  display: flex;
+  display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 6px;
