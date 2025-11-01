@@ -25,7 +25,47 @@
     </div>
   </header>
 
+<!-- ===== Golden Mic Loader ===== -->
+<div id="loader" role="status" aria-label="Loading">
+  <div class="mic-wrap" id="micWrap" aria-hidden="true">
+    <!-- Inline SVG mic -->
+    <svg id="gold-mic" viewBox="0 0 300 420" width="220" height="308"
+      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Golden vintage microphone">
+      <defs>
+        <linearGradient id="gradGold" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#fff4c9"/>
+          <stop offset="0.35" stop-color="#ffd56a"/>
+          <stop offset="0.7" stop-color="#d4af37"/>
+          <stop offset="1" stop-color="#b8860b"/>
+        </linearGradient>
+      </defs>
+      <rect x="70" y="40" width="160" height="168" rx="24" ry="24"
+        fill="url(#gradGold)" stroke="#8f6f08" stroke-width="1.4"/>
+      <g transform="translate(86,64)" fill="#3b2706">
+        <rect x="0" y="0" width="128" height="12" rx="6"/>
+        <rect x="0" y="26" width="128" height="12" rx="6"/>
+        <rect x="0" y="52" width="128" height="12" rx="6"/>
+        <rect x="0" y="78" width="128" height="12" rx="6"/>
+        <rect x="0" y="104" width="128" height="12" rx="6"/>
+      </g>
+      <rect x="120" y="212" width="60" height="22" rx="4"
+        fill="url(#gradGold)" stroke="#8f6f08" stroke-width="1"/>
+      <circle cx="150" cy="223" r="6" fill="#8b6610" stroke="#5a3f06" stroke-width="1"/>
+      <rect x="142" y="236" width="16" height="84" rx="8"
+        fill="url(#gradGold)" stroke="#8f6f08" stroke-width="1.2"/>
+      <ellipse cx="150" cy="334" rx="36" ry="10" fill="url(#gradGold)" stroke="#8f6f08" stroke-width="1.2"/>
+    </svg>
+  </div>
+</div>
 
+<!-- Your main page content -->
+<div id="page-content" style="display: none;">
+  <h1 style="color:#0f9d58; text-align:center; margin-top:40vh;">Your Main Page</h1>
+</div>
+
+<!-- Loader CSS & JS -->
+<link rel="stylesheet" href="loader.css">
+<script src="loader.js" defer></script>
   <div id="loader">
   <div class="loader-content">
     <div class="mic vibrate"></div>
