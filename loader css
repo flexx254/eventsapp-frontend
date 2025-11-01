@@ -1,0 +1,92 @@
+:root {
+  --gold: #d4af37;
+  --bg: #000;
+}
+
+/* Loader full-screen black backdrop */
+#loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  z-index: 99999;
+  overflow: hidden;
+  transition: opacity 0.9s ease, visibility 0.9s;
+}
+
+/* mic wrapper */
+.mic-wrap {
+  width: 220px;
+  height: auto;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(212,175,55,0.6));
+}
+
+/* glowing + vibrating */
+.mic-glow {
+  filter: drop-shadow(0 0 30px rgba(255,223,93,0.92)) brightness(1.08);
+}
+
+.mic-vibrate {
+  animation: micVibrate 0.12s infinite alternate;
+}
+
+@keyframes micVibrate {
+  0% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+/* Dollar signs */
+.dollar {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% - 60px);
+  transform: translateX(-50%);
+  font-weight: 800;
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(212,175,55,0.95),
+               0 0 16px rgba(255,236,139,0.45);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.dollar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.95), rgba(212,175,55,0.25) 40%, transparent 65%);
+  filter: blur(3px);
+  opacity: 0.95;
+}
+
+/* Animation — equally all around */
+@keyframes dollarBurst {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Fade out loader */
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mic-vibrate { animation: none; }
+  .dollar { animation: none; opacity: 1; }
+}
