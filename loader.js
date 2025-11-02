@@ -1,73 +1,63 @@
-(() => {
-  const loader = document.getElementById('loader');
-  const micWrap = document.getElementById('micWrap');
-  const pageContent = document.getElementById('page-content');
+const loader = document.getElementById('loader');
+const micImg = document.querySelector('.mic-img');
+const dollarLayer = document.querySelector('.dollar-layer');
+const pageContent = document.getElementById('page-content');
 
-  const BURST_INTERVAL = 2000;  // every 2 seconds
-  const BURST_DURATION = 420;   // vibration duration (ms)
-  const DOLLAR_COUNT = 12;      // per burst
-  let hasBurstOnce = false;
-  let burstTimer = null;
+// Vibrate mic and fire dollars
+function vibrateMic() {
+  micImg.classList.add('vibrate');
+  createDollarBursts();
+  setTimeout(() => micImg.classList.remove('vibrate'), 500);
+}
 
-  // Create a burst (vibrate + dollars)
-  function doBurst() {
-    hasBurstOnce = true;
-    micWrap.classList.add('mic-vibrate', 'mic-glow');
+// Create animated dollar signs
+function createDollarBursts() {
+  for (let i = 0; i < 10; i++) {
+    const dollar = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    dollar.textContent = '$';
+    dollar.setAttribute('x', '100');
+    dollar.setAttribute('y', '100');
+    dollar.setAttribute('fill', '#FFD700');
+    dollar.setAttribute('font-size', '22');
+    dollar.setAttribute('filter', 'drop-shadow(0 0 6px #FFD700)');
+    dollarLayer.appendChild(dollar);
 
+    // Random direction
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 80 + Math.random() * 60;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+
+    // Animate outward
+    dollar.animate([
+      { transform: 'translate(0,0)', opacity: 1 },
+      { transform: `translate(${x}px, ${y}px) scale(0.5)`, opacity: 0 }
+    ], {
+      duration: 1500,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
+
+    setTimeout(() => dollar.remove(), 1500);
+  }
+}
+
+// Vibrate every 2 seconds
+let vibrateInterval = setInterval(vibrateMic, 2000);
+
+// Start loader immediately
+document.addEventListener("DOMContentLoaded", () => {
+  vibrateMic(); // ensure at least one vibration right away
+});
+
+// Fade out once everything (images, scripts, etc.) is fully loaded
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    clearInterval(vibrateInterval);
+    loader.classList.add('fade-out');
     setTimeout(() => {
-      micWrap.classList.remove('mic-vibrate', 'mic-glow');
-    }, BURST_DURATION);
-
-    // equally spread around the mic
-    for (let i = 0; i < DOLLAR_COUNT; i++) {
-      const dollar = document.createElement('div');
-      dollar.className = 'dollar';
-      dollar.textContent = '$';
-
-      const angle = (i / DOLLAR_COUNT) * Math.PI * 2;
-      const distance = 120 + Math.random() * 120;
-      const x = Math.cos(angle) * distance + 'px';
-      const y = -Math.sin(angle) * distance + 'px';
-
-      const size = 16 + Math.random() * 20;
-      const dur = 1.8 + Math.random() * 1.2;
-
-      dollar.style.fontSize = `${size}px`;
-      dollar.style.setProperty('--x', x);
-      dollar.style.setProperty('--y', y);
-      dollar.style.animation = `dollarBurst ${dur}s ease-out forwards`;
-
-      loader.appendChild(dollar);
-
-      setTimeout(() => dollar.remove(), dur * 1000 + 200);
-    }
-  }
-
-  function startBursts() {
-    doBurst();
-    burstTimer = setInterval(doBurst, BURST_INTERVAL);
-  }
-
-  function stopBursts() {
-    clearInterval(burstTimer);
-    burstTimer = null;
-  }
-
-  startBursts();
-
-  window.addEventListener('load', () => {
-    // Ensure at least one burst occurs
-    if (!hasBurstOnce) doBurst();
-
-    stopBursts();
-    micWrap.classList.remove('mic-vibrate', 'mic-glow');
-
-    setTimeout(() => {
-      loader.classList.add('fade-out');
-      setTimeout(() => {
-        loader.style.display = 'none';
-        pageContent.style.display = 'block';
-      }, 900);
+      loader.style.display = 'none';
+      pageContent.style.display = 'block';
     }, 800);
-  });
-})();
+  }, 1800); // ensure at least one visible vibration
+});
