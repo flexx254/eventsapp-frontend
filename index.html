@@ -24,11 +24,28 @@
       <span></span>
     </div>
   </header>
-  <!-- Simple Gold Loader -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
+  
+<!-- ===== Alternating Fireworks Loader (musical notes <-> dollars) ===== -->
+<div id="loader" aria-hidden="false" role="status" aria-label="Loading">
+  <!-- Shared defs for shiny gold gradient -->
+  <svg id="loader-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <linearGradient id="goldGrad" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#fff7d9"/>
+        <stop offset="0.35" stop-color="#ffdf8a"/>
+        <stop offset="0.7" stop-color="#d4af37"/>
+        <stop offset="1" stop-color="#b8860b"/>
+      </linearGradient>
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
 
+  <!-- container where symbol svgs will be appended -->
+  <div id="fire-container" aria-hidden="true"></div>
+</div>
   <!-- HERO SECTION -->
   <section class="hero" id="home">
     <div class="hero-content">
