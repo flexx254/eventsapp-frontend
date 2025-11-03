@@ -1,4 +1,4 @@
-/* Loader background */
+/* Fullscreen overlay */
 #loader {
   position: fixed;
   top: 0;
@@ -7,46 +7,30 @@
   height: 100%;
   background: black;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 9999;
-  overflow: hidden;
+  transition: opacity 0.6s ease;
 }
 
-/* Mic styling */
-#mic {
-  width: 120px;
-  height: auto;
-  animation: vibrate 0.3s linear infinite;
+/* Gold spinner */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 215, 0, 0.3); /* faint gold outline */
+  border-top: 5px solid gold; /* bright gold top */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* Vibration animation */
-@keyframes vibrate {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  20% { transform: translate(-2px, 2px) rotate(-2deg); }
-  40% { transform: translate(2px, -2px) rotate(2deg); }
-  60% { transform: translate(-2px, -1px) rotate(-1deg); }
-  80% { transform: translate(1px, 1px) rotate(1deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+/* Spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Dollar signs */
-.dollar {
-  position: absolute;
-  font-size: 24px;
-  color: gold;
+/* Fade out */
+.hidden {
   opacity: 0;
   pointer-events: none;
-  animation: fly 1.5s ease-out forwards;
-}
-
-@keyframes fly {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) scale(0.5);
-    opacity: 0;
-  }
 }
