@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investor Sign Up</title>
+
+<style>
+    body {
+        background: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .container {
+        max-width: 400px;
+        margin: auto;
+    }
+    input {
+        width: 100%;
+        padding: 14px;
+        margin: 10px 0;
+        background: #111;
+        border: 1px solid #444;
+        color: white;
+        border-radius: 6px;
+    }
+    button {
+        width: 100%;
+        padding: 14px;
+        background: white;
+        color: black;
+        font-weight: bold;
+        border: none;
+        margin-top: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #ddd;
+    }
+    .error {
+        color: #ff4d4d;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Sign Up</h2>
+
+    <input id="fullname" type="text" placeholder="Full Name" />
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+
+    <button onclick="signup()">Create Account</button>
+
+    <p class="error" id="error"></p>
+</div>
+
+<script>
+async function signup() {
+    const fullname = document.getElementById("fullname").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const res = await fetch("https://your-render-url.com/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullname, email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        document.getElementById("error").innerText = data.error;
+    } else {
+        window.location.href = "/login.html";
+    }
+}
+</script>
+
+</body>
+</html>
